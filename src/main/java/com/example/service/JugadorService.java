@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 
+import static com.example.domain.Posicion.*;
+
 /**
  * Created by Sergi M on 14/10/2016.
  */
@@ -21,23 +23,36 @@ public class JugadorService {
 
     public void testJugadores(){
 
-    Jugador jugador1 = new Jugador("Pablo", LocalDate.of(1996, 1, 14), 220, 300, 250, "Alero");
+    Jugador jugador1 = new Jugador("Pablo", LocalDate.of(1996, 1, 14), 220, 300, 250, Alero);
         jugadorRepository.save(jugador1);
 
-        Jugador jugador2 = new Jugador("Sergi", LocalDate.of(1996, 10, 18), 200, 350, 168, "Pivot");
-        jugadorRepository.save(jugador1);
+        Jugador jugador2 = new Jugador("Sergi", LocalDate.of(1996, 10, 18), 200, 350, 168, Pivot);
+        jugadorRepository.save(jugador2);
 
-        Jugador jugador3 = new Jugador("Cortesina", LocalDate.of(1756, 1, 1), 400, 657, 1, "Base");
-        jugadorRepository.save(jugador1);
+        Jugador jugador3 = new Jugador("Cortesina", LocalDate.of(1756, 1, 1), 400, 657, 1, Base);
+        jugadorRepository.save(jugador3);
 
-        Jugador jugador4 = new Jugador("Juanjo", LocalDate.of(2001, 3, 13), 2, 5, 6, "Alero");
-        jugadorRepository.save(jugador1);
+        Jugador jugador4 = new Jugador("Juanjo", LocalDate.of(2001, 3, 13), 2, 5, 6, Alero);
+        jugadorRepository.save(jugador4);
 
-        Jugador jugador5 = new Jugador("Carlitus", LocalDate.of(1950, 10, 5), 2, 4, 7, "Base");
-        jugadorRepository.save(jugador1);
+        Jugador jugador5 = new Jugador("Carlitus", LocalDate.of(1950, 10, 5), 2, 4, 7, Base);
+        jugadorRepository.save(jugador5);
 
         System.out.println("Buscar jugadores por nombre: ");
         System.out.println(jugadorRepository.findByNombre("Pablo"));
+
+        System.out.println("Buscar por numero de canastas: ");
+        System.out.println(jugadorRepository.findBycanastasGreaterThanEqual(250));
+        System.out.println("Buscar por numero de asistencias entre el rango: ");
+        System.out.println(jugadorRepository.findByasistenciasBetween(1, 25));
+        System.out.println("Buscar jugador por posición: ");
+        System.out.println(jugadorRepository.findByposicion(Base));
+        System.out.println("Buscar jugador con fecha de nacimiento anterior: ");
+        System.out.println(jugadorRepository.findBynacimientoBefore((LocalDate.of(1990,10,10))));
+        System.out.println("Buscar jugadores por posicion y calcular medias: ");
+
+
+
 
     }
 
@@ -45,6 +60,8 @@ public class JugadorService {
 }
 
 /*
+
+
 package com.example.service;
 
 import com.example.domain.Car;

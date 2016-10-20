@@ -1,8 +1,13 @@
 package com.example.repository;
 
-import com.example.domain.Jugador;
+import com.example.domain.*;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+
+import java.time.LocalDate;
 import java.util.List;
+
 
 
 /**
@@ -11,7 +16,27 @@ import java.util.List;
 public interface JugadorRepository extends JpaRepository<Jugador, Long> {
 
 
-    List<Jugador> findByNombre(String pablo);
+    List<Jugador> findByNombre(String nombre);
+    List<Jugador> findBycanastasGreaterThanEqual(Integer canastas);
+    List<Jugador> findByasistenciasBetween(Integer min, Integer max);
+    List<Jugador> findByposicion(Posicion posicion);
+    List<Jugador> findBynacimientoBefore(LocalDate nacimiento);
+
+    @Query("SELECT jugadores.posicion, AVG(jugadores.canastas)," +
+            "AVG(jugadores.asistencias), AVG(jugadores.rebotes)," +
+              "FROM Jugadores jugadores"+
+        "GROUP BY jugadores.posicion")
+      List<Object[]>AvgJugadoresposicion();
+
+
+    @Query("SELECT jugadores.posicion, AVG(jugadores.canastas)," +
+            "AVG(jugadores.asistencias), AVG(jugadores.rebotes)," +
+            "MIN(jugadores.canastas)," +"MIN(jugadores.asistencias), MIN(jugadores.rebotes)," +
+            "MAX(jugadores.canastas)," +"MAX(jugadores.asistencias), MAX(jugadores.rebotes)," +
+            "FROM Jugadores jugadores"+
+            "GROUP BY jugadores.posicion")
+    List<Object[]>AvgJugadoresmaxmin();
+
 
 }
 
