@@ -188,7 +188,7 @@ public class JugadorService {
         System.out.println("Buscar jugador por posición: ");
         System.out.println(jugadorRepository.findByposicion(Base));
         System.out.println("Buscar jugador con fecha de nacimiento anterior: ");
-        System.out.println(jugadorRepository.findBynacimientoBefore((LocalDate.of(1990,10,10))));
+        System.out.println(jugadorRepository.findByfechanacimientoBefore((LocalDate.of(1990,10,10))));
         System.out.println("Buscar jugadores por posicion y calcular medias: ");
 
 

@@ -26,8 +26,7 @@ public Jugador(){
 
 }
 
-    public Jugador(String pablo, LocalDate of, int canastas, int asistencias, int rebotes, String alero) {
-    }
+
 
     public Jugador(String nombre, LocalDate fechanacimiento, int canastas, int asistencias, int rebotes, Posicion posicion) {
         this.nombre = nombre;
@@ -36,6 +35,9 @@ public Jugador(){
         this.asistencias = asistencias;
         this.rebotes = rebotes;
         this.posicion = posicion;
+    }
+
+    public Jugador(long id, String nombre, LocalDate fechanacimiento, int canastas, int asistencias, int rebotes, Posicion posicion) {
     }
 
     public long getId() {
