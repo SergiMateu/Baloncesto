@@ -1,6 +1,8 @@
 package com.example.service;
 
+import com.example.domain.Equipo;
 import com.example.domain.Jugador;
+import com.example.repository.EquipoRepository;
 import com.example.repository.JugadorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,22 +23,160 @@ public class JugadorService {
     @Autowired
     private JugadorRepository jugadorRepository;
 
+    @Autowired
+    private EquipoRepository equipoRepository;
+
     public void testJugadores(){
 
-    Jugador jugador1 = new Jugador("Pablo", LocalDate.of(1996, 1, 14), 220, 300, 250, Alero);
+
+
+        //equipos
+
+
+        Equipo equipo1 = new Equipo("Clanzoncillos", "Dojo", LocalDate.of(1857, 10, 2));
+        equipoRepository.save(equipo1);
+
+        Equipo equipo2 = new Equipo("ReZeroTeam", "Barcelona", LocalDate.of(1870, 11, 6));
+        equipoRepository.save(equipo2);
+
+        Equipo equipo3 = new Equipo("Kao", "Earth", LocalDate.of(1897, 2, 8));
+        equipoRepository.save(equipo3);
+
+        Equipo equipo4 = new Equipo("Fnatic", "Londres", LocalDate.of(1878, 4, 3));
+        equipoRepository.save(equipo4);
+
+        Equipo equipo5 = new Equipo("Reads", "Korea", LocalDate.of(1872, 8, 2));
+        equipoRepository.save(equipo5);
+
+
+        //jugadores
+
+
+        Jugador jugador1 = new Jugador("Pablo", LocalDate.of(1996, 1, 14), 220, 300, 250, Alero);
+
+        jugador1.setEquipo(equipo1);
         jugadorRepository.save(jugador1);
 
         Jugador jugador2 = new Jugador("Sergi", LocalDate.of(1996, 10, 18), 200, 350, 168, Pivot);
+
+        jugador2.setEquipo(equipo1);
         jugadorRepository.save(jugador2);
 
         Jugador jugador3 = new Jugador("Cortesina", LocalDate.of(1756, 1, 1), 400, 657, 1, Base);
+
+        jugador3.setEquipo(equipo1);
         jugadorRepository.save(jugador3);
 
-        Jugador jugador4 = new Jugador("Juanjo", LocalDate.of(2001, 3, 13), 2, 5, 6, Alero);
+        Jugador jugador4 = new Jugador("Juanjo", LocalDate.of(2001, 3, 13), 20, 50, 60, Alero);
+
+        jugador4.setEquipo(equipo1);
         jugadorRepository.save(jugador4);
 
-        Jugador jugador5 = new Jugador("Carlitus", LocalDate.of(1950, 10, 5), 2, 4, 7, Base);
+        Jugador jugador5 = new Jugador("Carlitus", LocalDate.of(1950, 12, 5), 12, 14, 17, Base);
+
+        jugador5.setEquipo(equipo1);
         jugadorRepository.save(jugador5);
+
+        Jugador jugador6 = new Jugador("Pau", LocalDate.of(1970, 11, 5), 22, 24, 27, Pivot);
+
+        jugador6.setEquipo(equipo2);
+        jugadorRepository.save(jugador6);
+
+        Jugador jugador7 = new Jugador("Tenno", LocalDate.of(1960, 10, 1), 32, 34, 37, Alero);
+
+        jugador7.setEquipo(equipo2);
+        jugadorRepository.save(jugador7);
+
+        Jugador jugador8 = new Jugador("Luffy", LocalDate.of(1980, 9, 2), 42, 44, 47, Base);
+
+        jugador8.setEquipo(equipo2);
+        jugadorRepository.save(jugador8);
+
+        Jugador jugador9 = new Jugador("PetelgeuseRomaneeContidessssss", LocalDate.of(1990, 10, 3), 52, 54, 57, Escolta);
+
+        jugador9.setEquipo(equipo2);
+        jugadorRepository.save(jugador9);
+
+        Jugador jugador10 = new Jugador("Subaru", LocalDate.of(1959, 12, 4), 62, 64, 67, Base);
+
+        jugador10.setEquipo(equipo2);
+        jugadorRepository.save(jugador10);
+
+        Jugador jugador11 = new Jugador("Emilia", LocalDate.of(1958, 8, 5), 72, 74, 77, Escolta);
+
+        jugador11.setEquipo(equipo3);
+        jugadorRepository.save(jugador11);
+
+        Jugador jugador12 = new Jugador("Rem", LocalDate.of(1956, 7, 6), 82, 84, 87, Base);
+
+        jugador12.setEquipo(equipo3);
+        jugadorRepository.save(jugador12);
+
+        Jugador jugador13 = new Jugador("Ram", LocalDate.of(1953, 9, 7), 92, 94, 97, Escolta);
+
+        jugador13.setEquipo(equipo3);
+        jugadorRepository.save(jugador13);
+
+        Jugador jugador14 = new Jugador("Reinhard", LocalDate.of(1967, 2, 8), 25, 45, 75, Base);
+
+        jugador14.setEquipo(equipo3);
+        jugadorRepository.save(jugador14);
+
+        Jugador jugador15 = new Jugador("Wilhelm", LocalDate.of(1989, 4, 9), 29, 49, 79, AlaPivot);
+
+        jugador15.setEquipo(equipo3);
+        jugadorRepository.save(jugador15);
+
+        Jugador jugador16 = new Jugador("Thearesia", LocalDate.of(1999, 10, 10), 25, 41, 71, Base);
+
+        jugador16.setEquipo(equipo4);
+        jugadorRepository.save(jugador16);
+
+        Jugador jugador17 = new Jugador("Elsa", LocalDate.of(1998, 12, 5), 82, 54, 47, AlaPivot);
+
+        jugador17.setEquipo(equipo4);
+        jugadorRepository.save(jugador17);
+
+        Jugador jugador18 = new Jugador("Crusch", LocalDate.of(1991, 11, 4), 32, 14, 87, Base);
+
+        jugador18.setEquipo(equipo4);
+        jugadorRepository.save(jugador18);
+
+        Jugador jugador19 = new Jugador("Priscilla", LocalDate.of(1990, 8, 2), 20, 47, 76, AlaPivot);
+
+        jugador19.setEquipo(equipo4);
+        jugadorRepository.save(jugador19);
+
+        Jugador jugador20 = new Jugador("Anastasia", LocalDate.of(1978, 4, 1), 26, 43, 77, Base);
+
+        jugador20.setEquipo(equipo4);
+        jugadorRepository.save(jugador20);
+
+        Jugador jugador21 = new Jugador("Roswaal", LocalDate.of(2001, 3, 3), 25, 42, 71, AlaPivot);
+
+        jugador21.setEquipo(equipo5);
+        jugadorRepository.save(jugador21);
+
+        Jugador jugador22 = new Jugador("Julius", LocalDate.of(1800, 8, 7), 22, 42, 72, Base);
+
+        jugador22.setEquipo(equipo5);
+        jugadorRepository.save(jugador22);
+
+        Jugador jugador23 = new Jugador("Felt", LocalDate.of(2000, 10, 4), 29, 47, 77, AlaPivot);
+
+        jugador23.setEquipo(equipo5);
+        jugadorRepository.save(jugador23);
+
+        Jugador jugador24 = new Jugador("Puck", LocalDate.of(1100, 12, 2), 23, 42, 71, Base);
+
+        jugador24.setEquipo(equipo5);
+        jugadorRepository.save(jugador24);
+
+        Jugador jugador25 = new Jugador("Beatrice", LocalDate.of(500, 11, 8), 92, 49, 57, AlaPivot);
+
+        jugador25.setEquipo(equipo5);
+        jugadorRepository.save(jugador25);
+
 
         System.out.println("Buscar jugadores por nombre: ");
         System.out.println(jugadorRepository.findByNombre("Pablo"));
@@ -52,7 +192,17 @@ public class JugadorService {
         System.out.println("Buscar jugadores por posicion y calcular medias: ");
 
 
+        jugadorRepository.AvgJugadoresPosicion().forEach(posicion ->
+                System.out.println("posicion =" + posicion[0] + "media canastas" + posicion[1]
+                        + "media asistencias" + posicion[2] + "media rebotes"));
 
+        System.out.println("Buscar jugadores por posicion y calcular medias, min y max: ");
+        jugadorRepository.AvgJugadoresMaxMin().forEach(posicion ->
+                System.out.println("posicion =" + posicion[0] + "media canastas" + posicion[1]
+                        + "media asistencias" + posicion[2] + "media rebotes" + posicion[3]
+                        + "max canastas" + posicion[4] + "max asistencias" + posicion[5]
+                        + "max rebotes" + posicion[6] + "min canastas" + posicion[7]
+                        + "min asistencias" + posicion[8] + "min rebotes" + posicion[9]));
 
     }
 

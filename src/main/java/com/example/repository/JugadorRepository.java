@@ -11,7 +11,7 @@ import java.util.List;
 
 
 /**
- * Created by Sergi Mateu on 14/10/2016.
+ * Created by Sergi M on 14/10/2016.
  */
 public interface JugadorRepository extends JpaRepository<Jugador, Long> {
 
@@ -20,22 +20,21 @@ public interface JugadorRepository extends JpaRepository<Jugador, Long> {
     List<Jugador> findBycanastasGreaterThanEqual(Integer canastas);
     List<Jugador> findByasistenciasBetween(Integer min, Integer max);
     List<Jugador> findByposicion(Posicion posicion);
-    List<Jugador> findBynacimientoBefore(LocalDate nacimiento);
+    List<Jugador> findBynacimientoBefore(LocalDate fechanacimiento);
 
-    @Query("SELECT jugadores.posicion, AVG(jugadores.canastas)," +
-            "AVG(jugadores.asistencias), AVG(jugadores.rebotes)," +
-              "FROM Jugadores jugadores"+
-        "GROUP BY jugadores.posicion")
-      List<Object[]>AvgJugadoresposicion();
+    @Query("SELECT jugador.posicion, AVG(jugador.canastas), " +
+            "AVG(jugador.asistencias), AVG(jugador.rebotes) " +
+            "FROM Jugador jugador " +
+            "GROUP BY jugador.posicion")
+    List<Object[]> AvgJugadoresPosicion();
 
-
-    @Query("SELECT jugadores.posicion, AVG(jugadores.canastas)," +
-            "AVG(jugadores.asistencias), AVG(jugadores.rebotes)," +
-            "MIN(jugadores.canastas)," +"MIN(jugadores.asistencias), MIN(jugadores.rebotes)," +
-            "MAX(jugadores.canastas)," +"MAX(jugadores.asistencias), MAX(jugadores.rebotes)," +
-            "FROM Jugadores jugadores"+
-            "GROUP BY jugadores.posicion")
-    List<Object[]>AvgJugadoresmaxmin();
+    @Query("SELECT jugador.posicion, AVG(jugador.canastas), " +
+            "AVG(jugador.asistencias), AVG(jugador.rebotes), " +
+            "MIN(jugador.canastas), MIN(jugador.asistencias), MIN(jugador.rebotes)," +
+            "MAX(jugador.canastas), MAX(jugador.asistencias), MAX(jugador.rebotes) " +
+            "FROM Jugador jugador " +
+            "GROUP BY jugador.posicion")
+    List<Object[]> AvgJugadoresMaxMin();
 
 
 }

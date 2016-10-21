@@ -14,19 +14,24 @@ public class Jugador {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String nombre;
-    private LocalDate fecha_nacimiento;
+    private LocalDate fechanacimiento;
     private int canastas;
     private int asistencias;
     private int rebotes;
     private Posicion posicion;
+    @ManyToOne
+    private Equipo equipo;
 
+public Jugador(){
+
+}
 
     public Jugador(String pablo, LocalDate of, int canastas, int asistencias, int rebotes, String alero) {
     }
 
-    public Jugador(String nombre, LocalDate fecha_nacimiento, int canastas, int asistencias, int rebotes, Posicion posicion) {
+    public Jugador(String nombre, LocalDate fechanacimiento, int canastas, int asistencias, int rebotes, Posicion posicion) {
         this.nombre = nombre;
-        this.fecha_nacimiento = fecha_nacimiento;
+        this.fechanacimiento = fechanacimiento;
         this.canastas = canastas;
         this.asistencias = asistencias;
         this.rebotes = rebotes;
@@ -49,12 +54,12 @@ public class Jugador {
         this.nombre = nombre;
     }
 
-    public LocalDate getFecha_nacimiento() {
-        return fecha_nacimiento;
+    public LocalDate getFechanacimiento() {
+        return fechanacimiento;
     }
 
-    public void setFecha_nacimiento(LocalDate fecha_nacimiento) {
-        this.fecha_nacimiento = fecha_nacimiento;
+    public void setFechanacimiento(LocalDate fechanacimiento) {
+        this.fechanacimiento = fechanacimiento;
     }
 
     public int getCanastas() {
@@ -89,12 +94,20 @@ public class Jugador {
         this.posicion = posicion;
     }
 
+    public Equipo getEquipo() {
+        return equipo;
+    }
+
+    public void setEquipo(Equipo equipo) {
+        this.equipo = equipo;
+    }
+
     @Override
     public String toString() {
         return "Jugador{" +
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
-                ", fecha_nacimiento='" + fecha_nacimiento + '\'' +
+                ", fechanacimiento='" + fechanacimiento + '\'' +
                 ", canastas=" + canastas +
                 ", asistencias=" + asistencias +
                 ", rebotes=" + rebotes +
