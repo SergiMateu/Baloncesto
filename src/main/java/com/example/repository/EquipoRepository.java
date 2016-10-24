@@ -10,5 +10,5 @@ import java.util.List;
  */
     public interface EquipoRepository extends JpaRepository<Equipo, Long> {
 
-
+    List<Equipo> findByLocalidad(String localidad);
 }
