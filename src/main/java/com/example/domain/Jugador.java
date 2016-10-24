@@ -104,6 +104,7 @@ public Jugador(){
         this.equipo = equipo;
     }
 
+    
     @Override
     public String toString() {
         return "Jugador{" +

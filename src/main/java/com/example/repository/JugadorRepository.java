@@ -16,6 +16,7 @@ import java.util.List;
 public interface JugadorRepository extends JpaRepository<Jugador, Long> {
 
 
+
     List<Jugador> findByNombre(String nombre);
     List<Jugador> findBycanastasGreaterThanEqual(Integer canastas);
     List<Jugador> findByasistenciasBetween(Integer min, Integer max);

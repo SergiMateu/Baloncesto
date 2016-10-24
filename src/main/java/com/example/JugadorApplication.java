@@ -11,6 +11,7 @@ public class JugadorApplication {
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context= SpringApplication.run(JugadorApplication.class, args);
 
+
 		JugadorService JugadorService=context.getBean(JugadorService.class);
 
 

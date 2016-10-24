@@ -117,6 +117,7 @@ public class JugadorService {
         jugador13.setEquipo(equipo3);
         jugadorRepository.save(jugador13);
 
+
         Jugador jugador14 = new Jugador("Reinhard", LocalDate.of(1967, 2, 8), 25, 45, 75, Base);
 
         jugador14.setEquipo(equipo3);

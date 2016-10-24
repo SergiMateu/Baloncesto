@@ -5,4 +5,5 @@ package com.example.domain;
  */
 public enum Posicion {
     Base, Alero, Pivot, Escolta, AlaPivot;
+
 }
