@@ -205,6 +205,20 @@ public class JugadorService {
                         + "max rebotes" + posicion[6] + "min canastas" + posicion[7]
                         + "min asistencias" + posicion[8] + "min rebotes" + posicion[9]));
 
+        System.out.println("Busca jugadores por equipo ");
+
+        System.out.println(jugadorRepository.findByEquipoNombre("Kao"));
+
+        System.out.println("Busca jugadores por su equipo que juegan de pivot ");
+
+        System.out.println(jugadorRepository.findByEquipoNombreAndPosicion("Fnatic", Pivot));
+
+        //EQUIPO
+
+        System.out.println("Buscar equipo por localidad ");
+
+        System.out.println(equipoRepository.findByLocalidad("Barcelona"));
+
     }
 
 
