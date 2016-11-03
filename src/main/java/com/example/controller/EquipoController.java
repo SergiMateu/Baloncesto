@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * Created by 46422520x on 24/10/2016.
+ * Created by Sergi Mateu on 24/10/2016.
  */
 @RestController
 @RequestMapping ("/equipos")
