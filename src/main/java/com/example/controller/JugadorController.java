@@ -52,6 +52,21 @@ public class JugadorController {
     public void deleteJugador(@PathVariable Long id) {
         jugadorRepository.delete(id);
     }
+
+
+    @GetMapping("/Jugadoresordcanastas")
+    public List<Object[]> findbycanastasorderby() {
+        return jugadorRepository.findbycanastasorderby();
+    }
+
+
+    /**
+     * @GetMapping("/findBycanastasBetween/{min}{max}")
+    public List<Jugador> findBycanastasBetween(@PathVariable Integer min, Integer max) {
+        return jugadorRepository.findBycanastasBetween(min, max);
+    }
+*/
+
 }
 
 /**
