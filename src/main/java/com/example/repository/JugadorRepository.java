@@ -49,6 +49,16 @@ public interface JugadorRepository extends JpaRepository<Jugador, Long> {
 
     List<Jugador> findBycanastasBetween(Integer min, Integer max);
 
+
+    @Query("SELECT jugador.posicion, " +
+            " MIN(jugador.canastas)," +
+            " MAX(jugador.canastas), " +
+            "AVG(jugador.canastas)" +
+            "FROM Jugador jugador " +
+            "GROUP BY jugador.posicion")
+    List<Object[]> findByPosicionAndMedia();
+
+
 }
 
 /*

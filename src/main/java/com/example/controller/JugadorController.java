@@ -1,12 +1,15 @@
 package com.example.controller;
 
 import com.example.domain.Jugador;
+import com.example.domain.Posicion;
 import com.example.repository.JugadorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import java.util.*;
 
-import java.util.List;
+
+import java.util.*;
 
 /**
  * Created by Sergi Mateu on 24/10/2016.
@@ -60,12 +63,38 @@ public class JugadorController {
     }
 
 
-    /**
-     * @GetMapping("/findBycanastasBetween/{min}{max}")
-    public List<Jugador> findBycanastasBetween(@PathVariable Integer min, Integer max) {
-        return jugadorRepository.findBycanastasBetween(min, max);
+
+      @GetMapping("/between/{puntos1}/{puntos2}")
+    public List<Jugador> findBycanastasBetween(@PathVariable Integer puntos1,@PathVariable Integer puntos2) {
+        return jugadorRepository.findBycanastasBetween(puntos1,puntos2);
     }
-*/
+
+
+    @GetMapping("/PosicionAndMedia")
+
+    public Map<Posicion, EstadisticasPosicion> findByPosicionAndMedia(){
+
+        List<Object[]> estadisticasPosicions = jugadorRepository.findByPosicionAndMedia();
+
+
+        Map<Posicion, EstadisticasPosicion> estadisticasPosicionMap = new HashMap<>();
+
+        estadisticasPosicions.
+                forEach(estadisticasPosicion -> {
+
+                    EstadisticasPosicion aux = new EstadisticasPosicion();
+                    aux.setPosicion((Posicion)estadisticasPosicion[0]);
+                    aux.setMinCanastas((Integer)estadisticasPosicion[1]);
+                    aux.setMaxCanastas((Integer)estadisticasPosicion[2]);
+                    aux.setAvgCanastas((Double) estadisticasPosicion[3]);
+
+                    estadisticasPosicionMap.put(aux.getPosicion(), aux);
+
+                });
+
+        return estadisticasPosicionMap;
+    }
+
 
 }
 
