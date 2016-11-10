@@ -3,6 +3,8 @@ package com.example.controller;
 import com.example.domain.Jugador;
 import com.example.domain.Posicion;
 import com.example.repository.JugadorRepository;
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.ListMultimap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -63,16 +65,15 @@ public class JugadorController {
     }
 
 
-
-      @GetMapping("/between/{puntos1}/{puntos2}")
-    public List<Jugador> findBycanastasBetween(@PathVariable Integer puntos1,@PathVariable Integer puntos2) {
-        return jugadorRepository.findBycanastasBetween(puntos1,puntos2);
+    @GetMapping("/between/{puntos1}/{puntos2}")
+    public List<Jugador> findBycanastasBetween(@PathVariable Integer puntos1, @PathVariable Integer puntos2) {
+        return jugadorRepository.findBycanastasBetween(puntos1, puntos2);
     }
 
 
     @GetMapping("/PosicionAndMedia")
 
-    public Map<Posicion, EstadisticasPosicion> findByPosicionAndMedia(){
+    public Map<Posicion, EstadisticasPosicion> findByPosicionAndMedia() {
 
         List<Object[]> estadisticasPosicions = jugadorRepository.findByPosicionAndMedia();
 
@@ -83,9 +84,9 @@ public class JugadorController {
                 forEach(estadisticasPosicion -> {
 
                     EstadisticasPosicion aux = new EstadisticasPosicion();
-                    aux.setPosicion((Posicion)estadisticasPosicion[0]);
-                    aux.setMinCanastas((Integer)estadisticasPosicion[1]);
-                    aux.setMaxCanastas((Integer)estadisticasPosicion[2]);
+                    aux.setPosicion((Posicion) estadisticasPosicion[0]);
+                    aux.setMinCanastas((Integer) estadisticasPosicion[1]);
+                    aux.setMaxCanastas((Integer) estadisticasPosicion[2]);
                     aux.setAvgCanastas((Double) estadisticasPosicion[3]);
 
                     estadisticasPosicionMap.put(aux.getPosicion(), aux);
@@ -93,6 +94,20 @@ public class JugadorController {
                 });
 
         return estadisticasPosicionMap;
+    }
+
+    //ordenar por posiciones
+    @GetMapping("/ByPositionALLJugadores")
+    public Map<Posicion, Collection<Jugador>> findByAllPosiciones() {
+        List<Jugador> jugadores = jugadorRepository.findAll();
+
+        ListMultimap<Posicion, Jugador> jugadorMultiMap = ArrayListMultimap.create();
+
+        jugadores.forEach(jugador ->
+                jugadorMultiMap.put(jugador.getPosicion(), jugador));
+
+        return jugadorMultiMap.asMap();
+
     }
 
 
