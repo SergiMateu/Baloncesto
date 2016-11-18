@@ -1,6 +1,7 @@
 package com.example.repository;
 
 import com.example.domain.Equipo;
+import com.example.domain.Localidad;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
  */
     public interface EquipoRepository extends JpaRepository<Equipo, Long> {
 
-    List<Equipo> findByLocalidad(String localidad);
+    List<Equipo> findByLocalidad(Localidad localidad);
 
     //List<Equipo> findByNombreEquipo(String nombre);
 

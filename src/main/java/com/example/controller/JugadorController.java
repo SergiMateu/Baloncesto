@@ -75,7 +75,7 @@ public class JugadorController {
 
     public Map<Posicion, EstadisticasPosicion> findByPosicionAndMedia() {
 
-        List<Object[]> estadisticasPosicions = jugadorRepository.findByPosicionAndMedia();
+        List<Object[]> estadisticasPosicions = jugadorRepository.findByPosicionAndMedia ();
 
 
         Map<Posicion, EstadisticasPosicion> estadisticasPosicionMap = new HashMap<>();
@@ -106,7 +106,10 @@ public class JugadorController {
         jugadores.forEach(jugador ->
                 jugadorMultiMap.put(jugador.getPosicion(), jugador));
 
+        System.out.println(jugadorMultiMap.get(Posicion.Base));
+        
         return jugadorMultiMap.asMap();
+
 
     }
 

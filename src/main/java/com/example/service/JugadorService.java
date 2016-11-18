@@ -1,7 +1,7 @@
 package com.example.service;
 
-import com.example.domain.Equipo;
-import com.example.domain.Jugador;
+import com.example.domain.*;
+import static com.example.domain.Localidad.*;
 import com.example.repository.EquipoRepository;
 import com.example.repository.JugadorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,19 +33,19 @@ public class JugadorService {
         //equipos
 
 
-        Equipo equipo1 = new Equipo("Clanzoncillos", "Dojo", LocalDate.of(1857, 10, 2));
+        Equipo equipo1 = new Equipo("Clanzoncillos", Dojo, LocalDate.of(1857, 10, 2));
         equipoRepository.save(equipo1);
 
-        Equipo equipo2 = new Equipo("ReZeroTeam", "Barcelona", LocalDate.of(1870, 11, 6));
+        Equipo equipo2 = new Equipo("ReZeroTeam", Barcelona, LocalDate.of(1870, 11, 6));
         equipoRepository.save(equipo2);
 
-        Equipo equipo3 = new Equipo("Kao", "Earth", LocalDate.of(1897, 2, 8));
+        Equipo equipo3 = new Equipo("Kao", Earth, LocalDate.of(1897, 2, 8));
         equipoRepository.save(equipo3);
 
-        Equipo equipo4 = new Equipo("Fnatic", "Londres", LocalDate.of(1878, 4, 3));
+        Equipo equipo4 = new Equipo("Fnatic", Korea, LocalDate.of(1878, 4, 3));
         equipoRepository.save(equipo4);
 
-        Equipo equipo5 = new Equipo("Reads", "Korea", LocalDate.of(1872, 8, 2));
+        Equipo equipo5 = new Equipo("Reads", Korea, LocalDate.of(1872, 8, 2));
         equipoRepository.save(equipo5);
 
 
@@ -217,7 +217,7 @@ public class JugadorService {
 
         System.out.println("Buscar equipo por localidad ");
 
-        System.out.println(equipoRepository.findByLocalidad("Barcelona"));
+        System.out.println(equipoRepository.findByLocalidad(Barcelona));
 
     }
 

@@ -14,7 +14,7 @@ public class Equipo {
 @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String nombre;
-    private String localidad;
+    private Localidad localidad;
     private LocalDate creación;
 
 
@@ -24,7 +24,7 @@ public class Equipo {
 
     }
 
-    public Equipo(String nombre, String localidad, LocalDate creación) {
+    public Equipo(String nombre, Localidad localidad, LocalDate creación) {
         this.nombre = nombre;
         this.localidad = localidad;
         this.creación = creación;
@@ -46,11 +46,11 @@ public class Equipo {
         this.nombre = nombre;
     }
 
-    public String getLocalidad() {
+    public Localidad getLocalidad() {
         return localidad;
     }
 
-    public void setLocalidad(String localidad) {
+    public void setLocalidad(Localidad localidad) {
         this.localidad = localidad;
     }
 
