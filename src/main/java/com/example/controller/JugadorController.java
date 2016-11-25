@@ -7,11 +7,13 @@ import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ListMultimap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.util.*;
 
-
+import java.net.URISyntaxException;
 import java.util.*;
+import java.net.URI;
+
 
 /**
  * Created by Sergi Mateu on 24/10/2016.
@@ -28,9 +30,26 @@ public class JugadorController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
+    public ResponseEntity<Jugador> createPlayer(@RequestBody Jugador jugador) throws URISyntaxException {
+        if (jugador.getId()!= null) {
+            return ResponseEntity.
+                    badRequest().
+                    headers(
+                            HeaderUtil.
+                                    createFailureAlert("player", "idexists", "A new player cannot already have an ID")).body(null);
+        }
+        Jugador result = jugadorRepository.save(jugador);
+        return ResponseEntity.created(new URI("/jugadores/" + result.getId()))
+                .headers(HeaderUtil.createEntityCreationAlert("jugador", result.getId().toString()))
+                .body(result);
+    }
+
+    /**@PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public Jugador createPlayer(@RequestBody Jugador jugador) {
         return jugadorRepository.save(jugador);
     }
+     */
 
     @PutMapping
     public Jugador updatePlayer(@RequestBody Jugador jugador) {

@@ -12,7 +12,7 @@ public class Jugador {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
     private String nombre;
     private LocalDate fechanacimiento;
     private int canastas;
@@ -37,14 +37,14 @@ public Jugador(){
         this.posicion = posicion;
     }
 
-    public Jugador(long id, String nombre, LocalDate fechanacimiento, int canastas, int asistencias, int rebotes, Posicion posicion) {
+    public Jugador(Long id, String nombre, LocalDate fechanacimiento, int canastas, int asistencias, int rebotes, Posicion posicion) {
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

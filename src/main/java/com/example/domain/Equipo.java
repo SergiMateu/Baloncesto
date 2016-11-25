@@ -12,7 +12,7 @@ public class Equipo {
 
 @Id
 @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
     private String nombre;
     private Localidad localidad;
     private LocalDate creación;
@@ -30,11 +30,11 @@ public class Equipo {
         this.creación = creación;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
