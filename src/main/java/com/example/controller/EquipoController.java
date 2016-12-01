@@ -9,8 +9,11 @@ import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ListMultimap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -27,11 +30,28 @@ public class EquipoController {
     @Autowired
     private EquipoRepository equipoRepository;
 
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Equipo createEquipo(@RequestBody Equipo equipo) {
-        return equipoRepository.save(equipo);
+    public ResponseEntity<Equipo> createPlayer(@RequestBody Equipo equipo) throws URISyntaxException {
+        if (equipo.getId()!= null) {
+            return ResponseEntity.
+                    badRequest().
+                    headers(
+                            HeaderUtil.
+                                    createFailureAlert("equipos", "idexists", "A new player cannot already have an ID")).body(null);
+        }
+        Equipo result = equipoRepository.save(equipo);
+        return ResponseEntity.created(new URI("/equipos/" + result.getId()))
+                .headers(HeaderUtil.createEntityCreationAlert("equipo", result.getId().toString()))
+                .body(result);
     }
+
+    //@PostMapping
+    //@ResponseStatus(HttpStatus.CREATED)
+    //public Equipo createEquipo(@RequestBody Equipo equipo) {
+     //   return equipoRepository.save(equipo);
+    //}
 
     @PutMapping
     public Equipo updateEquipo(@RequestBody Equipo equipo) {
